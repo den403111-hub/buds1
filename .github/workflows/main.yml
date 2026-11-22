@@ -1,3 +1,4 @@
+
 name: Build APK
 on:
   push:
@@ -7,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q BudsPopup (1).zip
+      - run: unzip -qo PhotoPager.zip
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -15,10 +16,9 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.7
-          build-root-directory: BudsPopup
       - run: gradle assembleDebug
-        working-directory: BudsPopup
+        working-directory: PhotoPager
       - uses: actions/upload-artifact@v4
         with:
-          name: BudsPopup-apk
-          path: BudsPopup/app/build/outputs/apk/debug/*.apk
+          name: PhotoPager-apk
+          path: PhotoPager/app/build/outputs/apk/debug/*.apk
