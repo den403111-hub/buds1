@@ -1,4 +1,3 @@
-
 name: Build APK
 on:
   push:
@@ -8,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -qo PhotoPager.zip
+      - run: unzip -qo PanoWall.zip
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -17,8 +16,9 @@ jobs:
         with:
           gradle-version: 8.7
       - run: gradle assembleDebug
-        working-directory: PhotoPager
+        working-directory: PanoWall
       - uses: actions/upload-artifact@v4
         with:
-          name: PhotoPager-apk
-          path: PhotoPager/app/build/outputs/apk/debug/*.apk
+          name: PanoWall-apk
+          path: PanoWall/app/build/outputs/apk/debug/*.apk
+          
